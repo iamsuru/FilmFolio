@@ -23,7 +23,7 @@ const SharedPlaylist = () => {
     useEffect(() => {
         const getSharedPlaylist = async () => {
             try {
-                const response = await fetch(`/api/shared/search-playlist?ref=${ref}&name=${playlistName}`);
+                const response = await fetch(`https://filmfolio-backend.onrender.com/api/shared/search-playlist?ref=${ref}&name=${playlistName}`);
                 const data = await response.json();
 
                 if (response.status === 403) {

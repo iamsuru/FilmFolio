@@ -14,7 +14,7 @@ const Signup = () => {
     const [lastname, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [profilePicture, setProfilePicture] = useState(null); // Add state for profile picture
+    const [profilePicture, setProfilePicture] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -33,7 +33,7 @@ const Signup = () => {
             formData.append('password', password);
             formData.append('file', profilePicture);
 
-            const response = await fetch("https://filmfolio.onrender.com/api/user/register", {
+            const response = await fetch("https://filmfolio-backend.onrender.com/api/user/register", {
                 method: "POST",
                 body: formData
             });

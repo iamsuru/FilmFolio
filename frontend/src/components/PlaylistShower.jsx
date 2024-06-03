@@ -38,7 +38,7 @@ const PlaylistShower = () => {
     useEffect(() => {
         const getPrivacy = async () => {
             try {
-                const response = await fetch(`https://filmfolio.onrender.com/api/playlist/privacy?ref=${user.uid}&name=${playlistName}`)
+                const response = await fetch(`https://filmfolio-backend.onrender.com/api/playlist/privacy?ref=${user.uid}&name=${playlistName}`)
                 const data = await response.json();
                 if (response.ok) {
                     setPrivacy(data.privacy)
@@ -52,7 +52,7 @@ const PlaylistShower = () => {
 
         const getPlaylist = async () => {
             try {
-                const response = await fetch(`https://filmfolio.onrender.com/api/shared/my-playlist?ref=${user.uid}&name=${playlistName}`);
+                const response = await fetch(`https://filmfolio-backend.onrender.com/api/shared/my-playlist?ref=${user.uid}&name=${playlistName}`);
                 const data = await response.json();
                 if (response.ok) {
                     setPlaylist(data.playlists);
@@ -102,7 +102,7 @@ const PlaylistShower = () => {
     const setPrivacyHandler = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`https://filmfolio.onrender.com/api/playlist/privacy`, {
+            const response = await fetch(`https://filmfolio-backend.onrender.com/api/playlist/privacy`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

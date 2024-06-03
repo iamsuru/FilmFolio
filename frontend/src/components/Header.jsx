@@ -50,7 +50,7 @@ const Header = () => {
         const fetchAllPlaylists = async () => {
             try {
                 setDrawerLoading(true);
-                const response = await fetch(`https://filmfolio.onrender.com/api/user/playlist?uid=${user.uid}`);
+                const response = await fetch(`https://filmfolio-backend.onrender.com/api/user/playlist?uid=${user.uid}`);
                 const data = await response.json();
                 if (response.ok) {
                     setAllPlayLists(data.playlists)
@@ -74,11 +74,12 @@ const Header = () => {
     }
 
     const searchMovie = async () => {
+        setResultSet(null);
         if (search && search.length > 0) {
             setHomePageLoading(true)
             navigate(`/search-result?movie-name=${search}`)
             try {
-                const response = await fetch(`https://filmfolio.onrender.com/api/movie/search?keyword=${search}`, {
+                const response = await fetch(`https://filmfolio-backend.onrender.com/api/movie/search?keyword=${search}`, {
                     method: "GET"
                 })
 

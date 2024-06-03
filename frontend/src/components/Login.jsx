@@ -20,7 +20,7 @@ const Login = () => {
     useEffect(() => {
         const isTokenExpired = async (token) => {
             try {
-                const response = await fetch('https://filmfolio.onrender.com/api/user/isTokenExpired', {
+                const response = await fetch('https://filmfolio-backend.onrender.com/api/user/isTokenExpired', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Login = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await fetch("https://filmfolio.onrender.com/api/user/auth", {
+            const response = await fetch("https://filmfolio-backend.onrender.com/api/user/auth", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
