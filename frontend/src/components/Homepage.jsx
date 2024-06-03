@@ -25,7 +25,7 @@ const HomePage = () => {
     useEffect(() => {
         const isTokenExpired = async (token) => {
             try {
-                const response = await fetch('/api/user/isTokenExpired', {
+                const response = await fetch('https://filmfolio.onrender.com/api/user/isTokenExpired', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const HomePage = () => {
         const discoverMovie = async () => {
             setLoading(true)
             try {
-                const response = await fetch('/api/movie/discover')
+                const response = await fetch('https://filmfolio.onrender.com/api/movie/discover')
 
                 const data = await response.json()
 

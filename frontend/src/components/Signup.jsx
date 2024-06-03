@@ -33,7 +33,7 @@ const Signup = () => {
             formData.append('password', password);
             formData.append('file', profilePicture);
 
-            const response = await fetch("/api/user/register", {
+            const response = await fetch("https://filmfolio.onrender.com/api/user/register", {
                 method: "POST",
                 body: formData
             });

@@ -41,7 +41,7 @@ const PlayListModal = ({ item, children }) => {
     const createAndAddPlaylist = async () => {
         try {
             setLoading(true)
-            const response = await fetch('/api/user/playlist', {
+            const response = await fetch('https://filmfolio.onrender.com/api/user/playlist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ const PlayListModal = ({ item, children }) => {
     const fetchAllPlaylists = async () => {
         setLoading2(true)
         try {
-            const response = await fetch(`/api/user/playlist?uid=${user.uid}`);
+            const response = await fetch(`https://filmfolio.onrender.com/api/user/playlist?uid=${user.uid}`);
             const data = await response.json();
             if (response.ok) {
                 setAllPlayLists(data.playlists)
@@ -105,7 +105,7 @@ const PlayListModal = ({ item, children }) => {
     const updatePlaylist = async (name) => {
         setLoading2(true);
         try {
-            const response = await fetch('/api/user/playlist', {
+            const response = await fetch('https://filmfolio.onrender.com/api/user/playlist', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
