@@ -102,7 +102,7 @@ const PlaylistShower = () => {
     const setPrivacyHandler = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`https://filmfolio-backend.onrender.com/api/playlist/privacy`, {
+            const response = await fetch(`https://filmpholio.netlify.app/api/playlist/privacy`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ const PlaylistShower = () => {
                         </Tooltip>
                     )}
                 </div>
-            </div >
+            </div>
             <div className='ps-5 pe-5'>
                 {
                     playlist && playlist[0]?.files.map((item) => (
