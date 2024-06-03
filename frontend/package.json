@@ -11,13 +11,14 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
+    "build": "^0.1.4",
     "filmfolio": "file:..",
     "framer-motion": "^11.2.10",
     "mdb-ui-kit": "^7.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-spinners": "^0.13.8",
     "react-top-loading-bar": "^2.3.1",
     "react-ui-cards": "^3.1.0",
@@ -25,8 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm install react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "npm install --legacy-peer-deps react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
