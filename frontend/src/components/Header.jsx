@@ -199,9 +199,9 @@ const Header = () => {
                             : (<></>)}
 
                         <Link className="navbar-brand ms-3 me-2" to="/homepage">
-                            <img src="https://flowbite.com/docs/images/logo.svg" height="25" alt="FilmFolio Logo"
+                            <img src="https://flowbite.com/docs/images/logo.svg" height="25" alt="FilmPholio Logo"
                                 style={{ marginTop: "-1px", cursor: "pointer" }} />
-                            <span className="align-items-center fs-auto fw-bolder text-black brand">FilmFolio</span>
+                            <span className="align-items-center fs-auto fw-bolder text-black brand">FilmPholio</span>
                         </Link>
 
 

@@ -11,7 +11,7 @@ require('./db/firebase')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: 'https://filmfolio.onrender.com',
+    origin: 'https://filmpholio.netlify.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: '*'
 }))
