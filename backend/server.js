@@ -1,17 +1,20 @@
 const express = require('express');
-const path = require('path')
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3500;
 
-// Import Firebase setup
-require('./db/firebase')  // This will run the firebase.js code
+require('./db/firebase')
 
 
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: 'https://filmfolio-backend.onrender.com',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: '*'
+}))
 
 app.get('/', (req, res) => {
     res.end("API WORKING");
