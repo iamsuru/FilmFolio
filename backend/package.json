@@ -1,0 +1,20 @@
+{
+  "name": "filmfolio",
+  "version": "1.0.0",
+  "description": "This project involves creating a comprehensive movie library web application using Node.js, Express.js, Firebase, and React.js. The application aims to provide users with a seamless and interactive experience for managing their favorite movies. Key features include user authentication, movie search functionality using the TMDB API, and the ability for users to create, manage, and share personalized movie lists.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Suryansh Shrivastava",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.2"
+  }
+}

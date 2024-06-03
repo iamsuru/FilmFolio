@@ -1,0 +1,32 @@
+.custom-box-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.loading-button {
+  cursor: not-allowed !important;
+}
+
+.nav-box {
+  height: fit-content !important;
+  width: 100vw !important;
+  display: flex;
+  justify-content: space-between !important;
+}
+
+@media (max-width: 600px) {
+  .brand {
+    display: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
