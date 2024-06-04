@@ -11,8 +11,8 @@ require('./db/firebase')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: 'https://filmpholio.netlify.app/',
+    methods: 'GET,PUT,POST',
     allowedHeaders: '*'
 }))
 
