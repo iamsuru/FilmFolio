@@ -113,6 +113,7 @@ const Header = () => {
         const query = new URLSearchParams(location.pathname);
         setQueryChange(query.get('movie-name'))
         if (queryChange !== search) {
+            setSearch(queryChange)
             searchMovie()
         }
     }, [queryChange])

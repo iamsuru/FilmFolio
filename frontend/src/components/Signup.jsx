@@ -50,7 +50,7 @@ const Signup = () => {
                     position: "top"
                 });
                 setTimeout(() => {
-                    navigate('/app');
+                    navigate('/');
                 }, 2000);
                 return
             } else if (response.status === 500) {
@@ -110,12 +110,12 @@ const Signup = () => {
         <main>
             <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
                 <form className="custom-box-shadow p-4 m-4" onSubmit={createUser}>
-                    <div className="mb-5">
+                    <div className="mb-1">
                         <h2 className="text-center fw-bold">REGISTRATION</h2>
                     </div>
 
                     <div className="row mb-4">
-                        <div className="col">
+                        <div className="col-md-6 mt-4">
                             <FormControl variant="floating" isRequired>
                                 <Input
                                     placeholder=" "
@@ -126,7 +126,7 @@ const Signup = () => {
                                 <FormLabel style={{ fontWeight: "400" }} className='text-primary'>First Name</FormLabel>
                             </FormControl>
                         </div>
-                        <div className="col">
+                        <div className="col-md-6 mt-4">
                             <FormControl variant="floating" isRequired>
                                 <Input
                                     placeholder=" "

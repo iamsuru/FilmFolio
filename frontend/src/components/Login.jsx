@@ -49,7 +49,6 @@ const Login = () => {
         } else {
             navigate('/');
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigate]);
 
     const authenticate = async (e) => {
