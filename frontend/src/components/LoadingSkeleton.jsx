@@ -4,17 +4,17 @@ import React from 'react'
 const LoadingSkeleton = () => {
     return (
         <Stack mt='5' p='5'>
-            <Skeleton height="400px" mt='10' pt='5' />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
-            <Skeleton height="400px" />
+            <Skeleton height="300px" mt='10' pt='5' />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
+            <Skeleton height="300px" />
 
         </Stack>
     )
