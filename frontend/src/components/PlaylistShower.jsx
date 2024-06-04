@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useUser } from '../context/UserContext';
 import PlayListVideoPreview from './PlayListVideoPreview';
-import { Button, Tooltip, useBreakpointValue, useToast } from '@chakra-ui/react';
+import { Box, Button, Tooltip, useBreakpointValue, useToast } from '@chakra-ui/react';
 import { LinkIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { useLocation } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
@@ -102,7 +102,7 @@ const PlaylistShower = () => {
     const setPrivacyHandler = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`https://filmpholio.netlify.app/api/playlist/privacy`, {
+            const response = await fetch(`https://filmfolio-backend.onrender.com/api/playlist/privacy`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -174,13 +174,13 @@ const PlaylistShower = () => {
                     )}
                 </div>
             </div>
-            <div className='ps-5 pe-5'>
+            <Box ps={{ base: "5", md: "2" }} pe={{ base: "5", md: "2" }}>
                 {
                     playlist && playlist[0]?.files.map((item) => (
                         <PlayListVideoPreview key={item.id} item={item} />
                     ))
                 }
-            </div>
+            </Box>
         </>
     );
 };
