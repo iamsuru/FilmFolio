@@ -31,6 +31,7 @@ const Header = () => {
     const [allPlayLists, setAllPlayLists] = useState([])
     const [drawerLoading, setDrawerLoading] = useState(false)
     const [queryChange, setQueryChange] = useState("")
+    const [isEmpty, setIsEmpty] = useState(false);
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const showDrawer = useBreakpointValue({ base: true, md: false });
@@ -71,6 +72,7 @@ const Header = () => {
 
     const handleSearchInputChange = (e) => {
         setSearch(e.target.value)
+        setIsEmpty(false);
     }
 
     const searchMovie = async () => {
@@ -143,6 +145,9 @@ const Header = () => {
             event.preventDefault();
             if (search && search.length > 0) {
                 searchMovie();
+            }
+            else {
+                setIsEmpty(true);
             }
         }
     }
@@ -218,7 +223,7 @@ const Header = () => {
                     <div className='d-flex justify-content-center align-items-center'>
                         {user && <form className="input-group" onKeyDown={handleEnterBtn}>
                             <input
-                                type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
+                                type="search" className={`form-control rounded ${isEmpty ? 'border-danger border-3' : ''}`} placeholder="Search" aria-label="Search"
                                 aria-describedby="search-addon"
                                 value={search}
                                 onChange={handleSearchInputChange}
