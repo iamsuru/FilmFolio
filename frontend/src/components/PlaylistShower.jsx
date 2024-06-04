@@ -5,6 +5,7 @@ import { Box, Button, Tooltip, useBreakpointValue, useToast } from '@chakra-ui/r
 import { LinkIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import { useLocation } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
+import LoadingSkeleton from './LoadingSkeleton'
 
 const PlaylistShower = () => {
     const { user } = useUser();
@@ -143,10 +144,7 @@ const PlaylistShower = () => {
                 <div className='d-flex'>
 
                     <Tooltip label='Click to share' placement='bottom'>
-                        {/* <Spinner size='sm' thickness='4px' speed='0.3s' className='text-primary' /> */}
-
                         <Button _hover={{ backgroundColor: "#3b71ca", color: "white" }} size={{ base: "md", md: 'sm' }} rightIcon={<LinkIcon />} m={1} onClick={createShareLink}>{showText && 'Share'}</Button>
-
                     </Tooltip>
 
                     {privacy ? (
@@ -174,6 +172,9 @@ const PlaylistShower = () => {
                     )}
                 </div>
             </div>
+            {
+                loading && <LoadingSkeleton />
+            }
             <Box ps={{ base: "5", md: "2" }} pe={{ base: "5", md: "2" }}>
                 {
                     playlist && playlist[0]?.files.map((item) => (

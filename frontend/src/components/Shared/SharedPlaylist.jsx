@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PlayListVideoPreview from '../PlayListVideoPreview';
 import { LockIcon } from '@chakra-ui/icons';
 import LoadingBar from 'react-top-loading-bar';
-
+import LoadingSkeleton from '../LoadingSkeleton';
 const SharedPlaylist = () => {
     const [playlistName, setPlaylistName] = useState('');
     const [ref, setRef] = useState('');
@@ -57,7 +57,10 @@ const SharedPlaylist = () => {
         <>
             <LoadingBar color='#3b71ca' ref={loadRef} />
 
-            <div className=' mt-5 p-4'>
+            <div className='mt-5 p-4'>
+                {
+                    loading && <LoadingSkeleton />
+                }
                 {(visibility && sharedPlaylist) &&
                     <>
                         <span className='h1 d-flex justify-content-center fw-bold'>Playlist&nbsp;:&nbsp;<span className='h1 fw-bolder text-primary'>{playlistName.toUpperCase()}</span></span>
