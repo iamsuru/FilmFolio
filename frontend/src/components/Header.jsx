@@ -108,6 +108,8 @@ const Header = () => {
             finally {
                 setHomePageLoading(false)
             }
+        } else {
+            setIsEmpty(true)
         }
     }
 
@@ -135,6 +137,7 @@ const Header = () => {
     }
 
     const handleFunction = (playlist) => {
+        setHomePageLoading(true);
         setMyPlayList(playlist)
         navigate(`/my-playlist?playlist-name=${playlist.name}`)
         onClose();
