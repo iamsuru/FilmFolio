@@ -40,7 +40,7 @@ const Header = () => {
     useEffect(() => {
         if (location.pathname === '/search-result') {
             const query = new URLSearchParams(location.search);
-            setSearch(query.get('movie-name'));
+            setSearch(query.get('movie-name') || "");
         } else {
             setSearch("")
         }
@@ -74,8 +74,8 @@ const Header = () => {
     }
 
     const searchMovie = async () => {
-        setResultSet(null);
         if (search && search.length > 0) {
+            setResultSet(null);
             setHomePageLoading(true)
             navigate(`/search-result?movie-name=${search}`)
             try {
@@ -96,7 +96,7 @@ const Header = () => {
                 }
             } catch (error) {
                 toast({
-                    title: error,
+                    title: error.message,
                     status: "error",
                     duration: 3000,
                     isCloseable: true,
@@ -110,13 +110,16 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const query = new URLSearchParams(location.pathname);
-        setQueryChange(query.get('movie-name'))
-        if (queryChange !== search) {
-            setSearch(queryChange)
-            searchMovie()
+        const query = new URLSearchParams(location.search);
+        const movieName = query.get('movie-name');
+        if (movieName !== queryChange) {
+            setQueryChange(movieName);
+            setSearch(movieName || "");
+            if (movieName) {
+                searchMovie();
+            }
         }
-    }, [queryChange])
+    }, [location.search, queryChange])
 
 
     const signout = () => {
@@ -136,9 +139,11 @@ const Header = () => {
     }
 
     const handleEnterBtn = (event) => {
-        if (event.key === "Enter" && search) {
-            event.preventDefault()
-            searchMovie()
+        if (event.key === "Enter") {
+            event.preventDefault();
+            if (search && search.length > 0) {
+                searchMovie();
+            }
         }
     }
 
@@ -259,4 +264,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Header
