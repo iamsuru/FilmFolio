@@ -42,6 +42,8 @@ const Header = () => {
         if (location.pathname === '/search-result') {
             const query = new URLSearchParams(location.search);
             setSearch(query.get('movie-name') || "");
+            setIsEmpty(false)
+
         } else {
             setSearch("")
         }
@@ -76,7 +78,7 @@ const Header = () => {
     }
 
     const searchMovie = async () => {
-        if (search && search.length > 0) {
+        if (search && search.trim() !== "" && search.length > 0) {
             setResultSet(null);
             setHomePageLoading(true)
             navigate(`/search-result?movie-name=${search}`)
@@ -119,7 +121,8 @@ const Header = () => {
         if (movieName !== queryChange) {
             setQueryChange(movieName);
             setSearch(movieName || "");
-            if (movieName) {
+            setIsEmpty(false)
+            if (movieName && movieName.trim() !== "") {
                 searchMovie();
             }
         }
@@ -131,6 +134,7 @@ const Header = () => {
         setUser();
         localStorage.removeItem('currentUserToken');
         setSearch("")
+        setIsEmpty(false)
         setAllPlayLists([])
         setResultSet(null)
         navigate('/');

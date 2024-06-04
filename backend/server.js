@@ -10,13 +10,13 @@ require('./db/firebase')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: '*',
+    origin: 'https://filmpholio.netlify.app',
     methods: 'GET,PUT,POST',
     allowedHeaders: '*'
 }))
 
 app.get('/', (req, res) => {
-    res.end("API WORKING");
+    res.end("API Running Successfully");
 })
 
 // Importing routes
