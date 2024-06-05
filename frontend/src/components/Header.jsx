@@ -38,15 +38,15 @@ const Header = () => {
 
     const { setResultSet, user, setUser, setMyPlayList, setHomePageLoading } = useUser()
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search)
-        setQueryChange(query.get('movie-name'))
-        if (queryChange !== search) {
-            setIsEmpty(false)
-            setSearch(queryChange)
-            searchMovie()
-        }
-    }, [queryChange])
+    // useEffect(() => {
+    //     const query = new URLSearchParams(location.search)
+    //     setQueryChange(query.get('movie-name'))
+    //     setSearch(query.get('movie-name'));
+    //     console.log(search);
+    //     searchMovie()
+    // }, [location.search])
+
+
 
     useEffect(() => {
         const fetchAllPlaylists = async () => {
@@ -72,12 +72,14 @@ const Header = () => {
     }, [isOpen]);
 
     const handleSearchInputChange = (e) => {
-        setSearch(e.target.value)
-        setIsEmpty(false);
-    }
+        setSearch(e.target.value);
+        setIsEmpty(e.target.value.trim() === "");
+    };
 
     const searchMovie = async () => {
+        console.log(search);
         if (search && search.trim() !== "" && search.length > 0) {
+            setIsEmpty(false)
             setResultSet(null);
             setHomePageLoading(true)
             navigate(`/search-result?movie-name=${search}`)
