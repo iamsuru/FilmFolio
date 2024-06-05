@@ -39,14 +39,14 @@ const Header = () => {
     const { setResultSet, user, setUser, setMyPlayList, setHomePageLoading } = useUser()
 
     useEffect(() => {
-        if (location.pathname === '/search-result') {
-            const query = new URLSearchParams(location.search);
-            setSearch(query.get('movie-name') || "");
+        const query = new URLSearchParams(location.search)
+        setQueryChange(query.get('movie-name'))
+        if (queryChange !== search) {
             setIsEmpty(false)
-        } else {
-            setSearch("")
+            setSearch(queryChange)
+            searchMovie()
         }
-    }, [location])
+    }, [queryChange])
 
     useEffect(() => {
         const fetchAllPlaylists = async () => {
@@ -91,6 +91,7 @@ const Header = () => {
                 else {
                     toast({
                         title: data.message,
+                        description: "Please try again",
                         status: "warning",
                         duration: 3000,
                         isCloseable: true,
@@ -98,13 +99,15 @@ const Header = () => {
                     });
                 }
             } catch (error) {
-                toast({
-                    title: error.message,
-                    status: "error",
-                    duration: 3000,
-                    isCloseable: true,
-                    position: 'bottom'
-                });
+                if (!search) {
+                    toast({
+                        title: error.message,
+                        status: "error",
+                        duration: 3000,
+                        isCloseable: true,
+                        position: 'bottom'
+                    });
+                }
             }
             finally {
                 setHomePageLoading(false)
@@ -114,18 +117,6 @@ const Header = () => {
         }
     }
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search);
-        const movieName = query.get('movie-name');
-        if (movieName !== queryChange) {
-            setQueryChange(movieName);
-            setSearch(movieName || "");
-            setIsEmpty(false)
-            if (movieName && movieName.trim() !== "") {
-                searchMovie();
-            }
-        }
-    }, [location.search, queryChange])
 
 
     const signout = () => {

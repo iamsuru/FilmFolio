@@ -56,6 +56,7 @@ const Login = () => {
         setLoading(true);
         try {
             const response = await fetch("https://filmfolio-backend.onrender.com/api/user/auth", {
+                // const response = await fetch("http://localhost:3500/api/user/auth", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

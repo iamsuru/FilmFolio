@@ -42,6 +42,16 @@ const SearchResult = () => {
                             </div>
                         </Box>
                     }
+                    {
+                        (!resultSet) &&
+                        <Box display='flex' justifyContent='center' alignItems='center' height='80vh'>
+                            <div className='d-flex justify-content-center flex-column align-items-center' >
+                                <img src={imgSrc} alt='Not_found_mage' />
+                                <Text className='mt-3'>This page isn't available. Sorry about that</Text>
+                                <Text>Try searching for something else.</Text>
+                            </div>
+                        </Box>
+                    }
                 </Box>
             }
         </>
