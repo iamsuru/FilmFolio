@@ -43,7 +43,7 @@ const SearchResult = () => {
                         </Box>
                     }
                     {
-                        (!resultSet) &&
+                        (!homePageLoading && !resultSet) &&
                         <Box display='flex' justifyContent='center' alignItems='center' height='80vh'>
                             <div className='d-flex justify-content-center flex-column align-items-center' >
                                 <img src={imgSrc} alt='Not_found_mage' />

@@ -30,23 +30,12 @@ const Header = () => {
     const location = useLocation();
     const [allPlayLists, setAllPlayLists] = useState([])
     const [drawerLoading, setDrawerLoading] = useState(false)
-    const [queryChange, setQueryChange] = useState("")
     const [isEmpty, setIsEmpty] = useState(false);
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const showDrawer = useBreakpointValue({ base: true, md: false });
 
     const { setResultSet, user, setUser, setMyPlayList, setHomePageLoading } = useUser()
-
-    // useEffect(() => {
-    //     const query = new URLSearchParams(location.search)
-    //     setQueryChange(query.get('movie-name'))
-    //     setSearch(query.get('movie-name'));
-    //     console.log(search);
-    //     searchMovie()
-    // }, [location.search])
-
-
 
     useEffect(() => {
         const fetchAllPlaylists = async () => {
@@ -71,13 +60,24 @@ const Header = () => {
         }
     }, [isOpen]);
 
+    useEffect(() => {
+        const url = new URLSearchParams(location.search)
+        const movieName = url.get('movie-name')
+        console.log(movieName);
+        setSearch(movieName)
+        searchMovie(movieName)
+    }, [])
+
+    useEffect(() => {
+        setIsEmpty(false)
+    }, [location.pathname !== "/search-result"])
+
     const handleSearchInputChange = (e) => {
         setSearch(e.target.value);
         setIsEmpty(e.target.value.trim() === "");
     };
 
-    const searchMovie = async () => {
-        console.log(search);
+    const searchMovie = async (search) => {
         if (search && search.trim() !== "" && search.length > 0) {
             setIsEmpty(false)
             setResultSet(null);
@@ -119,8 +119,6 @@ const Header = () => {
         }
     }
 
-
-
     const signout = () => {
         localStorage.removeItem('currentUser');
         setUser();
@@ -143,7 +141,7 @@ const Header = () => {
         if (event.key === "Enter") {
             event.preventDefault();
             if (search && search.length > 0) {
-                searchMovie();
+                searchMovie(search);
             }
             else {
                 setIsEmpty(true);
@@ -228,7 +226,7 @@ const Header = () => {
                                 onChange={handleSearchInputChange}
                             />
                             <span className="input-group-text border-0" id="search-addon">
-                                <i className="fas fa-search" style={{ cursor: "pointer" }} onClick={searchMovie}></i>
+                                <i className="fas fa-search" style={{ cursor: "pointer" }} onClick={() => searchMovie(search)}></i>
                             </span>
                         </form>}
                     </div>
