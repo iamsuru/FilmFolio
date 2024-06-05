@@ -3,7 +3,7 @@ import { useUser } from '../context/UserContext';
 import PlayListVideoPreview from './PlayListVideoPreview';
 import { Box, Button, Tooltip, useBreakpointValue, useToast } from '@chakra-ui/react';
 import { LinkIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import LoadingSkeleton from './LoadingSkeleton'
 
@@ -20,6 +20,7 @@ const PlaylistShower = () => {
     const ref = useRef(null)
     const toast = useToast();
     const location = useLocation()
+    const navigate = useNavigate()
     const showText = useBreakpointValue({ base: false, md: true });
 
     useEffect(() => {
@@ -73,6 +74,36 @@ const PlaylistShower = () => {
         }
     }, [playlistName]);
 
+    useEffect(() => {
+        const isTokenExpired = async (token) => {
+            try {
+                const response = await fetch('https://filmfolio-backend.onrender.com/api/user/isTokenExpired', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                if (response.status === 410) {
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('currentUserToken');
+                    navigate('/');
+                } else if (response.status === 500) {
+                    console.log('Internal server error');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        const token = JSON.parse(localStorage.getItem('currentUserToken'));
+        if (token) {
+            isTokenExpired(token);
+        } else {
+            navigate('/');
+        }
+    }, [navigate]);
 
     const createShareLink = () => {
         let url = `${window.location.origin}/shared-playlist?ref=${user.uid}&name=${playlistName}`

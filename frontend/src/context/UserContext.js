@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const DetailContext = createContext();
 
 const UserProvider = ({ children }) => {
-    const [homePageLoading, setHomePageLoading] = useState(false);
+    const [homePageLoading, setHomePageLoading] = useState(true);
     const [token, setToken] = useState()
     const [resultSet, setResultSet] = useState(null);
     const [user, setUser] = useState()

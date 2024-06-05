@@ -5,11 +5,13 @@ import VideoPreview from './VideoPreview';
 import LoadingBar from 'react-top-loading-bar'
 import LoadingSkeleton from './LoadingSkeleton';
 import imgSrc from '../image/notfoundimage.jpg'
+import { useNavigate } from 'react-router-dom';
 
 const SearchResult = () => {
     const ref = useRef(null)
 
     const { homePageLoading, resultSet } = useUser()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (homePageLoading) {
@@ -18,6 +20,37 @@ const SearchResult = () => {
             ref.current && ref.current.complete();
         }
     }, [homePageLoading]);
+
+    useEffect(() => {
+        const isTokenExpired = async (token) => {
+            try {
+                const response = await fetch('https://filmfolio-backend.onrender.com/api/user/isTokenExpired', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ token }),
+                });
+
+                if (response.status === 410) {
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('currentUserToken');
+                    navigate('/');
+                } else if (response.status === 500) {
+                    console.log('Internal server error');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        const token = JSON.parse(localStorage.getItem('currentUserToken'));
+        if (token) {
+            isTokenExpired(token);
+        } else {
+            navigate('/');
+        }
+    }, [navigate]);
 
     return (
         <>
