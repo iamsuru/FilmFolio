@@ -38,8 +38,6 @@ const Header = () => {
 
     const { setResultSet, user, setUser, setMyPlayList, setHomePageLoading } = useUser()
 
-    //setting null if it is not
-    setResultSet(null);
     useEffect(() => {
         if (location.pathname === '/search-result') {
             const query = new URLSearchParams(location.search);
