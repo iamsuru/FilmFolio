@@ -9,6 +9,7 @@ import PlaylistShower from './components/PlaylistShower'
 import SharedPlaylist from './components/Shared/SharedPlaylist'
 
 import SearchResult from './components/SearchResult'
+import ResetPassword from './components/ResetPassword'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/my-playlist' element={<PlaylistShower />} />
         <Route path='/shared-playlist' element={<SharedPlaylist />} />
         <Route path='/search-result' element={<SearchResult />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
       </Routes>
     </>
   )

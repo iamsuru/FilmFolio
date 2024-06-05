@@ -1,4 +1,4 @@
-const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, deleteUser } = require('firebase/auth');
+const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, deleteUser, updatePassword, sendPasswordResetEmail } = require('firebase/auth');
 const { getStorage, ref, uploadBytes, getDownloadURL } = require('firebase/storage');
 const { getDatabase, ref: refDB, set: setDB, get: getDB } = require('firebase/database');
 const { app } = require('../db/firebase');
@@ -134,4 +134,18 @@ const isTokenExpired = async (req, res) => {
     }
 }
 
-module.exports = { createUser, authUser, isTokenExpired };
+const resetPassword = async (req, res) => {
+    const { email } = req.body
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            return res.status(200).json({ message: `Reset Link sent to ${email}` })
+        })
+        .catch((error) => {
+            const errorCode = error.code
+            const errorMessage = error.message
+            console.log(errorCode + " " + errorMessage);
+            return res.status(500).json({ message: error.message })
+        })
+}
+
+module.exports = { createUser, authUser, isTokenExpired, resetPassword };

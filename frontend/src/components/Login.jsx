@@ -155,7 +155,7 @@ const Login = () => {
 
                     <div className="mb-4">
                         <div className="text-end">
-                            {/* <Link className='text-primary' style={{ whiteSpace: "nowrap", fontWeight: "600" }} to='#'>Forgot password?</Link> */}
+                            <Link className='text-primary' style={{ whiteSpace: "nowrap", fontWeight: "600" }} to='/reset-password'>Forgot password?</Link>
                         </div>
                     </div>
 
