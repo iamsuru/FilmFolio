@@ -1,11 +1,11 @@
-**FilmFolio - Movie Library Web Application**
+****FilmFolio - Movie Library Web Application************
 
-FilmFolio is a web application that allows users to search for movies, view details, and create personalized movie lists. These lists can be public or private, providing flexibility for users to share their favorite movies with others or keep them private. The application uses the OMDB API to fetch movie details.
+FilmFolio is a web application that allows users to search for movies, view details, and create personalized movie lists. These lists can be public or private, providing flexibility for users to share their favorite movies with others or keep them private. The application uses the TMDB API to fetch movie details.
 
-Features
+**Features**
 
 User Authentication: Sign Up and Sign In functionality.
-Movie Search: Search for movies using the OMDB API.
+Movie Search: Search for movies using the TMDB API.
 Movie Lists: Create and manage movie lists (similar to YouTube playlists).
 Public and Private Lists: Lists can be public (shareable via link) or private.
 Responsive Layout: A user-friendly interface inspired by popular websites/applications.
